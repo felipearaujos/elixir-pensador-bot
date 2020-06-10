@@ -22,7 +22,8 @@ defmodule PensadorCrawler.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:crawly, "~> 0.1"}
+      {:crawly, "~> 0.1"},
+      {:extwitter, "~> 0.8"}
     ]
   end
 end
