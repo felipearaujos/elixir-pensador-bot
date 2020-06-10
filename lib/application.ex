@@ -1,4 +1,4 @@
-defmodule PensadorCrawler.Application do
+defmodule PensadorBot.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -7,13 +7,13 @@ defmodule PensadorCrawler.Application do
 
   def start(_type, _args) do
     children = [
-      # Starts a worker by calling: PensadorCrawler.Worker.start_link(arg)
-      # {PensadorCrawler.Worker, arg}
+      # Starts a worker by calling: PensadorBot.Worker.start_link(arg)
+      # {PensadorBot.Worker, arg}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: PensadorCrawler.Supervisor]
+    opts = [strategy: :one_for_one, name: PensadorBot.Supervisor]
     Supervisor.start_link(children, opts)
   end
 end

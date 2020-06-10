@@ -1,4 +1,4 @@
-defmodule PensadorCrawler.MixProject do
+defmodule PensadorBot.MixProject do
   use Mix.Project
 
   def project do
@@ -15,7 +15,7 @@ defmodule PensadorCrawler.MixProject do
   def application do
     [
       extra_applications: [:logger],
-      mod: {PensadorCrawler.Application, []}
+      mod: {PensadorBot.Application, []}
     ]
   end
 
