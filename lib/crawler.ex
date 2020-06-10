@@ -1,4 +1,4 @@
-defmodule PensadorCrawler.Worker do
+defmodule PensadorBot.Crawler do
   def start() do
     build_url()
     |> fetch

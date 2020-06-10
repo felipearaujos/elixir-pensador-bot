@@ -1,4 +1,4 @@
-defmodule PensadorCrawler.MixProject do
+defmodule PensadorBot.MixProject do
   use Mix.Project
 
   def project do
@@ -15,14 +15,15 @@ defmodule PensadorCrawler.MixProject do
   def application do
     [
       extra_applications: [:logger],
-      mod: {PensadorCrawler.Application, []}
+      mod: {PensadorBot.Application, []}
     ]
   end
 
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:crawly, "~> 0.1"}
+      {:crawly, "~> 0.1"},
+      {:extwitter, "~> 0.8"}
     ]
   end
 end
