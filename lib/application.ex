@@ -5,9 +5,18 @@ defmodule PensadorBot.Application do
 
   use Application
 
-  def start(_type, _args) do
-    children = [PensadorBot.Twitter]
+  def start(_type, args) do
+    children = [PensadorBot.Twitter] ++ extra_children(args)
     opts = [strategy: :one_for_one, name: PensadorBot.Twitter]
+
     Supervisor.start_link(children, opts)
+  end
+
+  defp extra_children(env: :test) do
+    [{Plug.Cowboy, scheme: :http, plug: PensadorBot.CrawlyMockServer, options: [port: 8081]}]
+  end
+
+  defp extra_children(_) do
+    []
   end
 end
