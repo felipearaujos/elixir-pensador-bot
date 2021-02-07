@@ -6,9 +6,10 @@ defmodule PensadorBot.Twitter do
   end
 
   def send() do
-    phrase = PensadorBot.Crawler.start()
+    # PensadorBot.Crawler.start()
+    # |> ExTwitter.update(trim_user: true)
 
-    ExTwitter.update(phrase, trim_user: true)
+    :ok
   end
 
   def start_link(default) when is_list(default) do
@@ -29,9 +30,8 @@ defmodule PensadorBot.Twitter do
 
   @impl true
   def handle_info(:send, state) do
-    IO.inspect("send")
     send()
-    Process.send_after(self(), :send, 18000000)
+    Process.send_after(self(), :send, 18_000_000)
     {:noreply, state}
   end
 end
