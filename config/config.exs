@@ -8,3 +8,5 @@ config :extwitter, :oauth,
 
 config :pensador_crawler, PensadorBot.Crawler,
   fetch_url: "https://www.pensador.com/frases/:PAGE_NUMBER/"
+
+import_config "#{Mix.env()}.exs"
