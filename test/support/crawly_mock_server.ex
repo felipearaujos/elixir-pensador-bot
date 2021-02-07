@@ -11,15 +11,10 @@ defmodule PensadorBot.CrawlyMockServer do
   plug(:dispatch)
 
   get "frases/*page" do
-    IO.inspect(conn)
+    response = File.read!("test/support/fixtures/pensador_fixture.html")
 
-    # case conn.params do
-    #   %{"name" => "success-repo"} ->
-    success(conn, %{"id" => 1234, "name" => "success-repo"})
-
-    #   %{"name" => "failure-repo"} ->
-    #     failure(conn)
-    # end
+    conn
+    |> Plug.Conn.send_resp(200, response)
   end
 
   defp success(conn, body \\ "") do

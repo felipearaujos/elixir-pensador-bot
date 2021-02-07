@@ -10,10 +10,13 @@ defmodule PensadorBot.Crawler do
   end
 
   defp randomize() do
+    Logger.info("[#{__MODULE__}.randomize/0]")
     randomize(:rand.uniform(9950))
   end
 
   defp randomize(number) do
+    Logger.info("[#{__MODULE__}.randomize/1")
+
     case number do
       1 -> randomize()
       _ -> number
@@ -21,11 +24,15 @@ defmodule PensadorBot.Crawler do
   end
 
   defp build_url() do
+    Logger.info("[#{__MODULE__}.build_url]")
+
     env(:fetch_url)
     |> put_page()
   end
 
   defp put_page(url) do
+    Logger.info("[#{__MODULE__}.put_page]")
+
     page =
       randomize()
       |> Integer.to_string()
@@ -34,7 +41,7 @@ defmodule PensadorBot.Crawler do
   end
 
   defp fetch(url) do
-    Logger.info("[#{__MODULE__}]request to #{url}")
+    Logger.info("[#{__MODULE__}.fetch]request to #{url}")
 
     {:ok, response} = Crawly.fetch(url)
     response
@@ -52,6 +59,7 @@ defmodule PensadorBot.Crawler do
   end
 
   defp get_random_phrase(parsed_phrases) do
+    IO.inspect(parsed_phrases)
     Enum.at(parsed_phrases, :rand.uniform(Enum.count(parsed_phrases)))
   end
 
