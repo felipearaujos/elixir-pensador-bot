@@ -12,7 +12,7 @@ defmodule PensadorBot.Application do
     Supervisor.start_link(children, opts)
   end
 
-  defp extra_children(env: :test) do
+  defp extra_children(:test) do
     [{Plug.Cowboy, scheme: :http, plug: PensadorBot.CrawlyMockServer, options: [port: 8081]}]
   end
 
